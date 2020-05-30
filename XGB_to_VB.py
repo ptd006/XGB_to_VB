@@ -12,23 +12,16 @@ def string_parser_VB(s):
 
         if len(tabs) > 0:
             tabs1 = re.findall(r"[\t]+", s)[0].replace('\t', '    ')
-            return (tabs1 + '        If state = ' + out[0] + ' Then\n' +
-                    tabs1 + '            If ' + out[1] +" < " + out[2] + ' Then\n' +
-                    tabs1 + '                state = ' + out[4] + '\n' +
-                    tabs1 + '            Else\n' +
-                    tabs1 + '                state = ' + out[6] + '\n' +
-                    tabs1 + '            End If\n' +
-                    tabs1 + '        End If\n\n' )
-        
         else:
             tabs1 = ''
-            return (tabs1 + '        If state = ' + out[0] + ' Then\n' +
-                    tabs1 + '            If ' + out[1] +" < " + out[2] + ' Then\n' +
-                    tabs1 + '                state = ' + out[4] + '\n' +
-                    tabs1 + '            Else\n' +
-                    tabs1 + '                state = ' + out[6] + '\n' +
-                    tabs1 + '            End If\n' +
-                    tabs1 + '        End If\n\n' )    
+            
+        return (tabs1 + '        If state = ' + out[0] + ' Then\n' +
+                tabs1 + '            If ' + out[1] +" < " + out[2] + ' Then\n' +
+                tabs1 + '                state = ' + out[4] + '\n' +
+                tabs1 + '            Else\n' +
+                tabs1 + '                state = ' + out[6] + '\n' +
+                tabs1 + '            End If\n' +
+                tabs1 + '        End If\n\n' )
     else:
         # This is a leaf node and we should return a value
         # out = re.findall(r"[\d.-]+", s) 
@@ -79,7 +72,7 @@ def model_to_VB(model, out_file, num_classes=2):
                  + "\nEnd Function")
 
 import os
-os.chdir('/home/peter/ml/xgb_to_VB')
+os.chdir('/home/peter/ml/XGB_to_VB')
 
 bst = xgb.Booster({'nthread': 4})  # init model
 bst.load_model('demo.json')  # load data
