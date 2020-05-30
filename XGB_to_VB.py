@@ -51,7 +51,7 @@ def tree_parser_VB(tree, i):
 def model_to_VB(model, out_file, num_classes=2):
     trees = model.get_dump()
     
-    features  = sorted(list( set(re.findall(r"\[(.+)<[0-9\.]+\]+", "".join(trees) ) ) ) )
+    features  = sorted(list( set(re.findall(r"\[(.+)<", "".join(trees) ) ) ) )
     features = ",".join(features)
     result = ["Public Function xgb_tree("+features+",num_booster) As Double\n"
                  +"Dim State As Integer\n"]
